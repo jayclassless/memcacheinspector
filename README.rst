@@ -95,7 +95,7 @@ License
 
 memcacheinspector is released under the `MIT License`_. See the LICENSE file for full text of the license.
 
-    _`Memcached`: http://memcached.org/
-    _`pip`: http://pip.openplans.org/
-    _`SensePost Blog`: http://www.sensepost.com/blog/4873.html
-    _`MIT License`: http://www.opensource.org/licenses/mit-license.php
+    - _`Memcached`: http://memcached.org/
+    - _`pip`: http://pip.openplans.org/
+    - _`SensePost Blog`: http://www.sensepost.com/blog/4873.html
+    - _`MIT License`: http://www.opensource.org/licenses/mit-license.php

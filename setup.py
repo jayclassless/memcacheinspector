@@ -22,7 +22,7 @@ setup(
     description='Memcache Inspection Module and Command-Line Utility',
     long_description=open(os.path.join(os.path.dirname(__file__), 'README.rst')).read(),
 	license='MIT',
-	keywords='memcache inspector list dump search grep',
+	keywords='memcache memcached inspector list dump search grep',
     classifiers=[
         'Development Status :: 4 - Beta',
         'Environment :: Console',
