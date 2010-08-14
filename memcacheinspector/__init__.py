@@ -112,3 +112,7 @@ class MemcacheInspector:
         for client in self.clients:
             itemsets.update(self._get_itemset(client, include_values, max_value_size))
         return itemsets
+
+
+def get_items(hosts, include_values=False, max_value_size=0):
+    return MemcacheInspector(hosts).get_items(include_values, max_value_size)
