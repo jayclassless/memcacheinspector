@@ -8,9 +8,9 @@ import memcache
 import memcacheinspector
 
 
-def do_list(servers):
+def do_list(servers, max_value_size=0):
     mci = memcacheinspector.MemcacheInspector(servers)
-    for server, items in mci.get_items().iteritems():
+    for server, items in mci.get_items(max_value_size=max_value_size).iteritems():
         for item in items:
             print '%s|%s|%s|%s' % (server, item.expiration.isoformat(), item.size, item.key)
 
@@ -131,7 +131,7 @@ if __name__ == '__main__':
     opt.add_option(
             '-z', '--max-value-size',
             dest='max_value_size', action='store', type='int', default=0,
-            help='The maximum size (in bytes) of a value can be when performing a dump action. Defaults to no limit.'
+            help='The maximum size (in bytes) of a value can be when performing a list or dump action. Defaults to no limit.'
     )
     opt.add_option(
             '-d', '--delta',
@@ -161,8 +161,9 @@ if __name__ == '__main__':
     else:
         servers = ['127.0.0.1:11211']
 
+
     if action == 'list':
-        do_list(servers)
+        do_list(servers, options.max_value_size)
     elif action == 'dump':
         do_dump(servers, options.max_value_size)
     elif action == 'grep':
