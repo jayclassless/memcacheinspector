@@ -1,3 +1,5 @@
+import os.path
+
 try:
     from setuptools import setup, find_packages
 except ImportError:
@@ -19,10 +21,10 @@ setup(
     author='Jason Simeone',
     author_email='jay@classless.net',
     url='https://bitbucket.org/jayclassless/memcacheinspector',
-    description='Memcache Inspection Utility Module',
-    long_description='',
+    description='Memcache Inspection Module and Command-Line Utility',
+    long_description=open(os.path.join(os.path.dirname(__file__), 'README.rst')).read(),
 	license='MIT',
-	keywords='memcache inspector dump search grep',
+	keywords='memcache inspector list dump search grep',
     classifiers=[
         'Development Status :: 4 - Beta',
         'Environment :: Console',

@@ -121,6 +121,28 @@ if __name__ == '__main__':
   delete <key> [<key> ..] Deletes the items with the specified key(s).
   flush                   Expires all items in the server(s).
   stats                   Retrieves statistics from the server(s).
+''',
+            epilog='''
+Output Format:
+list:
+  <server connection string>|<expiration date>|<size in bytes>|<key>
+
+dump, grep:
+  <server connection string>|<expiration date>|<size in bytes>|<key>
+  <value>
+
+get, incr, decr:
+  <server connection string>|<key>
+  <value>
+
+set, delete:
+  <server connection string>|<key>
+
+flush:
+  <server connection string>
+
+stats:
+  <server connection string>|<statistic key>|<value>
 '''
     )
     opt.add_option(
