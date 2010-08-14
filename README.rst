@@ -5,15 +5,15 @@ memcacheinspector
 Memcache Inspection Module and Command-Line Utility
 ---------------------------------------------------
 
-:Author: Jason Simeone
-:Version: 0.1.0
+Introduction
+============
 
 This package includes two things:
 
--A python module for extracting keys from Memcached servers.
--A command-line utility for exploring, searching, and updating Memcached items.
+- A python module for extracting keys from `Memcached <http://memcached.org/>` servers.
+- A command-line utility for exploring, searching, and updating Memcached items.
 
-This utility make uses of the memcache "features" discussed in the SensePost blog: http://www.sensepost.com/blog/4873.html
+This utility make uses of the Memcached "features" discussed in the `SensePost Blog <http://www.sensepost.com/blog/4873.html>`.
 
 
 Installation
@@ -93,4 +93,4 @@ Usage
 License
 =======
 
-memcacheinspector is released under the MIT License. See the LICENSE file for full text of the license.
+memcacheinspector is released under the `MIT License <http://www.opensource.org/licenses/mit-license.php>`. See the LICENSE file for full text of the license.
