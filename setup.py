@@ -1,16 +1,31 @@
-from setuptools import setup, find_packages
+try:
+    from setuptools import setup, find_packages
+except ImportError:
+    from ez_setup import use_setuptools
+    use_setuptools()
+    from setuptools import setup, find_packages
+
 
 setup(
     name='memcacheinspector',
     version='0.1.0',
-    description='Memcache Inspection',
-    long_description='',
+    packages=find_packages('src'),
+	scripts = [
+		'bin/mcinspect',
+	]
+
     author='Jason Simeone',
     author_email='jay@classless.net',
     url='',
-    packages=find_packages('src'),
-    package_dir={'' : 'src'},
+    description='Memcache Inspection Utility',
+    long_description='',
+	license='',
+	keywords='memcache inspector dump',
     classifiers=[
+        'Intended Audience :: Developers',
+        'Natural Language :: English',
+        'Programming Language :: Python',
     ]
-)
 
+    package_dir={'' : 'src'},
+)
