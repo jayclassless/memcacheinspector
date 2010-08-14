@@ -4,7 +4,6 @@ import re
 import sys
 from optparse import OptionParser, IndentedHelpFormatter
 
-sys.path.append('/mnt/vault/playground/caching/memcacheinspector/src')
 import memcache
 import memcacheinspector
 
