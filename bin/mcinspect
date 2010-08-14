@@ -147,7 +147,7 @@ stats:
     )
     opt.add_option(
             '-s', '--server',
-            dest='servers', action='append', type='string',
+            dest='server', action='append', type='string',
             help='Specifies a server to connect to. Can be used multiple times. Defaults to \'127.0.0.1:11211\'.'
     )
     opt.add_option(
@@ -178,8 +178,8 @@ stats:
         action = args[0]
         del args[0]
 
-    if options.servers:
-        servers = options.servers
+    if options.server:
+        servers = options.server
     else:
         servers = ['127.0.0.1:11211']
 

@@ -57,7 +57,7 @@ Usage
     Options:
       --version             show program's version number and exit
       -h, --help            show this help message and exit
-      -s SERVERS, --server=SERVERS
+      -s SERVER, --server=SERVER
                             Specifies a server to connect to. Can be used multiple
                             times. Defaults to '127.0.0.1:11211'.
       -z MAX_VALUE_SIZE, --max-value-size=MAX_VALUE_SIZE
