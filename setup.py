@@ -5,22 +5,23 @@ except ImportError:
     use_setuptools()
     from setuptools import setup, find_packages
 
+import memcacheinspector
+
 
 setup(
     name='memcacheinspector',
-    version='0.1.0',
+    version=memcacheinspector.__version__,
     packages=find_packages(exclude=['tests']),
 	scripts = [
 		'bin/mcinspect',
 	],
     install_requires='python-memcached',
-
     author='Jason Simeone',
     author_email='jay@classless.net',
-    url='',
-    description='Memcache Inspection Utility',
+    url='https://bitbucket.org/jayclassless/memcacheinspector',
+    description='Memcache Inspection Utility Module',
     long_description='',
-	license='',
+	license='MIT',
 	keywords='memcache inspector dump search grep',
     classifiers=[
         'Development Status :: 4 - Beta',
@@ -30,5 +31,6 @@ setup(
         'Natural Language :: English',
         'Programming Language :: Python',
         'Topic :: Software Development :: Libraries :: Python Modules',
+        'License :: OSI Approved :: MIT License',
     ],
 )
