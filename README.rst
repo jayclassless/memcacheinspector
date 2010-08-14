@@ -76,11 +76,11 @@ Usage
       <server connection string>|<expiration date>|<size in bytes>|<key>
       <value>
 
-    get, incr, decr:
+    get, set, incr, decr:
       <server connection string>|<key>
       <value>
 
-    set, delete:
+    delete:
       <server connection string>|<key>
 
     flush:
