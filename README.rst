@@ -8,7 +8,10 @@ Memcache Inspection Module and Command-Line Utility
 :Author: Jason Simeone
 :Version: 0.1.0
 
-A
+This package includes two things:
+
+-A python module for extracting keys from Memcached servers.
+-A command-line utility for exploring, searching, and updating Memcached items.
 
 This utility make uses of the memcache "features" discussed in the SensePost blog: http://www.sensepost.com/blog/4873.html
 
@@ -17,12 +20,15 @@ Installation
 ============
 
 Using pip (recommended)::
+
     $ pip install memcacheinspector
 
 Or, using easy_install::
+
     $ easy_install memcacheinspector
 
 Or, you can download the source and install it by hand::
+
     $ python setup.py install
 
 Installing the package installs both the memcacheinspector python module as well as the mcinspect command-line utility.
@@ -32,6 +38,7 @@ Usage
 =====
 
 ::
+
     Usage: mcinspect [options] <action> [<arguments>]
 
     Actions:
