@@ -10,24 +10,16 @@ Introduction
 
 This package includes two things:
 
-- A python module for extracting keys from Memcached_ servers.
-- A command-line utility for exploring, searching, and updating Memcached_ items.
+- A python module for extracting keys from `Memcached`_ servers.
+- A command-line utility for exploring, searching, and updating `Memcached`_ items.
 
-    _Memcached: http://memcached.org/
-
-This utility make uses of the Memcached_ "features" discussed in the `SensePost Blog`_.
-
-    _`SensePost Blog`: http://www.sensepost.com/blog/4873.html
+This utility make uses of the `Memcached`_ "features" discussed in the `SensePost Blog`_.
 
 
 Installation
 ============
 
-Using pip_ (recommended)
-
-    _pip: http://pip.openplans.org/
-
-::
+Using `pip`_ (recommended)::
 
     $ pip install memcacheinspector
 
@@ -103,4 +95,7 @@ License
 
 memcacheinspector is released under the `MIT License`_. See the LICENSE file for full text of the license.
 
+    _`Memcached`: http://memcached.org/
+    _`pip`: http://pip.openplans.org/
+    _`SensePost Blog`: http://www.sensepost.com/blog/4873.html
     _`MIT License`: http://www.opensource.org/licenses/mit-license.php
