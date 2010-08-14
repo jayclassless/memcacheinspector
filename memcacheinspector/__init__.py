@@ -5,7 +5,7 @@ import socket
 import memcache
 
 
-__all__ = ('MemcacheInspector', 'MemcacheItem', 'MemcacheInspectorError')
+__all__ = ('MemcacheInspector', 'MemcacheItem', 'MemcacheInspectorError', 'get_items')
 __version_info__ = (0, 1, 0)
 __version__ = '.'.join([str(x) for x in __version_info__])
 
@@ -116,3 +116,4 @@ class MemcacheInspector:
 
 def get_items(hosts, include_values=False, max_value_size=0):
     return MemcacheInspector(hosts).get_items(include_values, max_value_size)
+
