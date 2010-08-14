@@ -7,12 +7,10 @@ except ImportError:
     use_setuptools()
     from setuptools import setup, find_packages
 
-import memcacheinspector
-
 
 setup(
     name='memcacheinspector',
-    version=memcacheinspector.__version__,
+    version='0.1.0',
     packages=find_packages(exclude=['tests']),
 	scripts = [
 		'bin/mcinspect',
