@@ -111,17 +111,20 @@ if __name__ == '__main__':
             version='%%prog %s' % (memcacheinspector.__version__,),
             formatter=_CustomHelpFormatter(),
             description='''Actions:
-  list                    Lists all items stored in the server(s).
-  dump                    Dumps all items (including values) stored in the server(s).
-  grep <pattern>          Dumps all items (including values) whose key or value matches
-                          the specified search pattern.
-  get <key> [<key> ..]    Retrieves the items with the specified key(s).
-  set <key> <value>       Sets the item with the specified key and value.
-  incr key                Increments the value of the items with the specified key(s).
-  decr key                Decrements the value of the items with the specified key(s).
-  delete <key> [<key> ..] Deletes the items with the specified key(s).
-  flush                   Expires all items in the server(s).
-  stats                   Retrieves statistics from the server(s).
+  list                     Lists all items stored in the server(s).
+  dump                     Dumps all items (including values) stored in the
+                           server(s).
+  grep <pattern>           Dumps all items (including values) whose key or value
+                           matches the specified search pattern.
+  get <key> [<key> ...]    Retrieves the items with the specified key(s).
+  set <key> <value>        Sets the item with the specified key and value.
+  incr key                 Increments the value of the items with the specified
+                           key(s).
+  decr key                 Decrements the value of the items with the specified
+                           key(s).
+  delete <key> [<key> ...] Deletes the items with the specified key(s).
+  flush                    Expires all items in the server(s).
+  stats                    Retrieves statistics from the server(s).
 ''',
             epilog='''
 Output Format:
