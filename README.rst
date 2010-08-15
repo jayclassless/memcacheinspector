@@ -76,25 +76,25 @@ Usage
                             items during the grep action.
 
     Output Format:
-    list:
-      <server connection string>|<expiration date>|<size in bytes>|<key>
+      list:
+        <server connection string>|<expiration date>|<size in bytes>|<key>
 
-    dump, grep:
-      <server connection string>|<expiration date>|<size in bytes>|<key>
-      <value>
+      dump, grep:
+        <server connection string>|<expiration date>|<size in bytes>|<key>
+        <value>
 
-    get, set, incr, decr:
-      <server connection string>|<key>
-      <value>
+      get, set, incr, decr:
+        <server connection string>|<key>
+        <value>
 
-    delete:
-      <server connection string>|<key>
+      delete:
+        <server connection string>|<key>
 
-    flush:
-      <server connection string>
+      flush:
+        <server connection string>
 
-    stats:
-      <server connection string>|<statistic key>|<value>
+      stats:
+        <server connection string>|<statistic key>|<value>
 
 
 License
