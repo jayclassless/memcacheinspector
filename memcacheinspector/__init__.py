@@ -55,6 +55,9 @@ class MemcacheItem:
     def __eq__(self, other):
         return self.equals(other)
 
+    def __ne__(self, other):
+        return not self.equals(other)
+
 
 _RE_SLAB_STAT = re.compile('^STAT (?P<id>\d+):chunk_size (\d+)$')
 _RE_ITEM = re.compile('^ITEM (?P<key>\S+) \[(?P<size>\d+) b; (?P<expiration>\d+) s\]$')

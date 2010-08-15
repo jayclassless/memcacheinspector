@@ -62,11 +62,11 @@ class MemcacheInspectorTests(unittest.TestCase):
         (mc[0]['addr'],),
         (mc[0]['client'],),
     )
-    def _singleClientItems(self, itemset):
-        item = MemcacheItem('foo', 3, self.now, value='bar')
+    def _singleClientItems(self, itemset, give_values=True):
+        item = MemcacheItem('foo', 3, self.now, value='bar' if give_values else None)
         self.assertContains(itemset, item, hosts=[self.mc[0]['addr']], ignore_expiration=True)
 
-        item = MemcacheItem('myaddr', len(self.mc[0]['addr']), self.now, value=self.mc[0]['addr'])
+        item = MemcacheItem('myaddr', len(self.mc[0]['addr']), self.now, value=self.mc[0]['addr'] if give_values else None)
         self.assertContains(itemset, item, hosts=[self.mc[0]['addr']], ignore_expiration=True)
 
     def testSingleClient(self):
@@ -78,6 +78,15 @@ class MemcacheInspectorTests(unittest.TestCase):
         for test in self.single_client_tests:
             self._singleClientItems(get_items(test, include_values=True))
 
+    def testSingleClientNoValues(self):
+        for test in self.single_client_tests:
+            mci = MemcacheInspector(test)
+            self._singleClientItems(mci.get_items(include_values=False), give_values=False)
+
+    def testGetItemsSingleClientNoValues(self):
+        for test in self.single_client_tests:
+            self._singleClientItems(get_items(test, include_values=False), give_values=False)
+
 
     multiple_client_tests = (
         (mc[0]['addr'], mc[1]['addr']),
@@ -85,28 +94,36 @@ class MemcacheInspectorTests(unittest.TestCase):
         (mc[0]['client'], mc[1]['addr']),
         (mc[0]['client'], mc[1]['client']),
     )
-    def _multipleClientItems(self, itemset):
-        item = MemcacheItem('foo', 3, self.now, value='bar')
+    def _multipleClientItems(self, itemset, give_values=True):
+        item = MemcacheItem('foo', 3, self.now, value='bar' if give_values else None)
         self.assertContains(itemset, item, ignore_expiration=True)
 
         for i in range(len(self.mc)):
-            item = MemcacheItem('myaddr', len(self.mc[i]['addr']), self.now, value=self.mc[i]['addr'])
+            item = MemcacheItem('myaddr', len(self.mc[i]['addr']), self.now, value=self.mc[i]['addr'] if give_values else None)
             self.assertContains(itemset, item, hosts=[self.mc[i]['addr']], ignore_expiration=True)
 
-        item = MemcacheItem('just_for_first', 7, self.now, value='special')
+        item = MemcacheItem('just_for_first', 7, self.now, value='special' if give_values else None)
         self.assertContains(itemset, item, hosts=[self.mc[0]['addr']], ignore_expiration=True)
-        item = MemcacheItem('just_for_last', 12, self.now, value='also special')
+        item = MemcacheItem('just_for_last', 12, self.now, value='also special' if give_values else None)
         self.assertContains(itemset, item, hosts=[self.mc[len(self.mc) - 1]['addr']], ignore_expiration=True)
-    
+
     def testMultipleClients(self):
         for test in self.multiple_client_tests:
             mci = MemcacheInspector(test)
             self._multipleClientItems(mci.get_items(include_values=True))
-
    
     def testGetItemsMultipleClients(self):
         for test in self.multiple_client_tests:
             self._multipleClientItems(get_items(test, include_values=True))
+
+    def testMultipleClientsNoValues(self):
+        for test in self.multiple_client_tests:
+            mci = MemcacheInspector(test)
+            self._multipleClientItems(mci.get_items(include_values=False), give_values=False)
+   
+    def testGetItemsMultipleClientsNoValues(self):
+        for test in self.multiple_client_tests:
+            self._multipleClientItems(get_items(test, include_values=False), give_values=False)
 
 
 
