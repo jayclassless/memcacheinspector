@@ -151,6 +151,7 @@ flush:
 
 stats:
   <server connection string>|<statistic key>|<value>
+
 '''
     )
     opt.add_option(
@@ -161,12 +162,12 @@ stats:
     opt.add_option(
             '-z', '--max-value-size',
             dest='max_value_size', action='store', type='int', default=0,
-            help='The maximum size (in bytes) of a value can be when performing a list or dump action. Defaults to no limit.'
+            help='The maximum size (in bytes) of a value can be when performing a list or dump action. Zero or lower is interpreted as no limit. Defaults to 0.'
     )
     opt.add_option(
             '-d', '--delta',
             dest='delta', action='store', type='int', default=1,
-            help='The amount to change the value when using the incr or decr actions.'
+            help='The amount to change the value when using the incr or decr actions. Defaults to 1.'
     )
     opt.add_option(
             '-i', '--ignore-case',

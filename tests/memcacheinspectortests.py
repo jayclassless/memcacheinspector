@@ -12,7 +12,7 @@ from memcacheinspector import *
 logging.basicConfig(level=logging.DEBUG)
 
 
-# These tests assume that memcache is already running.
+# These tests assume that memcached is already running.
 
 _PORT = 11222
 MC = []
@@ -111,7 +111,7 @@ class MemcacheInspectorTests(unittest.TestCase):
         for test in self.multiple_client_tests:
             mci = MemcacheInspector(test)
             self._multipleClientItems(mci.get_items(include_values=True))
-   
+
     def testGetItemsMultipleClients(self):
         for test in self.multiple_client_tests:
             self._multipleClientItems(get_items(test, include_values=True))
@@ -120,19 +120,10 @@ class MemcacheInspectorTests(unittest.TestCase):
         for test in self.multiple_client_tests:
             mci = MemcacheInspector(test)
             self._multipleClientItems(mci.get_items(include_values=False), give_values=False)
-   
+
     def testGetItemsMultipleClientsNoValues(self):
         for test in self.multiple_client_tests:
             self._multipleClientItems(get_items(test, include_values=False), give_values=False)
-
-
-
-
-
-
-
-
-
 
 
 if __name__ == '__main__':
