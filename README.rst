@@ -13,7 +13,7 @@ This package includes two things:
 - A `Python`_ module for extracting keys from `Memcached`_ servers.
 - A command-line utility for exploring, searching, and updating `Memcached`_ items.
 
-This utility make uses of the `Memcached`_ "features" discussed in the `SensePost Blog`_.
+This utility makes use of the `Memcached`_ status "features" discussed in the `SensePost Blog`_.
 
 
 Installation
@@ -107,6 +107,8 @@ Reference
 =========
 
 _`Home`: http://bitbucket.org/jayclassless/memcacheinspector/
+
+_`Package Index`: http://pypi.python.org/pypi/memcacheinspector/
 
 _`Python`: http://www.python.org/
 
