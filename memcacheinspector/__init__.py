@@ -6,7 +6,7 @@ import memcache
 
 
 __all__ = ('MemcacheInspector', 'MemcacheItem', 'MemcacheInspectorError', 'get_items')
-__version_info__ = (0, 2, 0)
+__version_info__ = (0, 2, 1)
 __version__ = '.'.join([str(x) for x in __version_info__])
 
 
@@ -14,7 +14,7 @@ class MemcacheInspectorError(Exception):
     pass
 
 
-class MemcacheItem:
+class MemcacheItem(object):
     def __init__(self, key, size, expiration, value=None):
         self.value = value
         if not key:
@@ -62,7 +62,7 @@ class MemcacheItem:
 _RE_SLAB_STAT = re.compile('^STAT (?P<id>\d+):chunk_size (\d+)$')
 _RE_ITEM = re.compile('^ITEM (?P<key>\S+) \[(?P<size>\d+) b; (?P<expiration>\d+) s\]$')
 
-class MemcacheInspector:
+class MemcacheInspector(object):
     def __init__(self, hosts):
         if isinstance(hosts, (list, tuple)):
             self.clients = self._build_clients(hosts)

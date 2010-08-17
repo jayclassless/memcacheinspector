@@ -10,7 +10,7 @@ except ImportError:
 
 setup(
     name='memcacheinspector',
-    version='0.2.0',
+    version='0.2.1',
     packages=find_packages(exclude=['tests']),
 	scripts = [
 		'bin/mcinspect',
@@ -22,7 +22,7 @@ setup(
     description='Memcache Inspection Module and Command-Line Utility',
     long_description=open(os.path.join(os.path.dirname(__file__), 'README.rst')).read(),
 	license='MIT',
-	keywords='memcache memcached inspector list dump search grep',
+	keywords='memcache memcached inspector list dump export search grep keys',
     classifiers=[
         'Development Status :: 4 - Beta',
         'Environment :: Console',
