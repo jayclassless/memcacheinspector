@@ -114,7 +114,7 @@ class MemcacheInspector(object):
                     line = server.readline()
 
             if include_values and items:
-                server.send_cmd('get %s' % ' '.join([i.key for i in items.values()]))
+                server.send_cmd('get %s' % ' '.join([i.key for i in list(items.values())]))
                 line = server.readline()
                 while line and line != 'END':
                     rkey, flags, rlen = cache._expectvalue(server, line)
@@ -122,7 +122,7 @@ class MemcacheInspector(object):
                         items[rkey].value = cache._recv_value(server, flags, rlen)
                     line = server.readline()
 
-            itemset[self._get_hostname(server)] = filter(lambda v: not include_values or v.value is not None, items.values())
+            itemset[self._get_hostname(server)] = [v for v in list(items.values()) if not include_values or v.value is not None]
 
         return itemset
 

@@ -8,19 +8,29 @@ import memcache
 import memcacheinspector
 
 
+try:
+    basestring
+except NameError:
+    basestring = str
+
+
+def out(msg):
+    sys.stdout.write('%s\n' % (msg,))
+
+
 def do_list(servers, max_value_size=0):
     mci = memcacheinspector.MemcacheInspector(servers)
-    for server, items in mci.get_items(max_value_size=max_value_size).iteritems():
+    for server, items in mci.get_items(max_value_size=max_value_size).items():
         for item in items:
-            print '%s|%s|%s|%s' % (server, item.expiration.isoformat(), item.size, item.key)
+            out('%s|%s|%s|%s' % (server, item.expiration.isoformat(), item.size, item.key))
 
 
 def do_dump(servers, max_value_size=0):
     mci = memcacheinspector.MemcacheInspector(servers)
-    for server, items in mci.get_items(include_values=True, max_value_size=max_value_size).iteritems():
+    for server, items in mci.get_items(include_values=True, max_value_size=max_value_size).items():
         for item in items:
-            print '%s|%s|%s|%s' % (server, item.expiration.isoformat(), item.size, item.key)
-            print item.value
+            out('%s|%s|%s|%s' % (server, item.expiration.isoformat(), item.size, item.key))
+            out(item.value)
 
 
 def do_grep(servers, pattern, ignore_case=False, invert_match=False):
@@ -29,28 +39,28 @@ def do_grep(servers, pattern, ignore_case=False, invert_match=False):
     else:
         regex = re.compile(pattern)
     mci = memcacheinspector.MemcacheInspector(servers)
-    for server, items in mci.get_items(include_values=True).iteritems():
+    for server, items in mci.get_items(include_values=True).items():
         for item in items:
             match = regex.search(item.key) or (isinstance(item.value, basestring) and regex.search(item.value))
             if bool(match) != invert_match:
-                print '%s|%s|%s|%s' % (server, item.expiration.isoformat(), item.size, item.key)
-                print item.value
+                out('%s|%s|%s|%s' % (server, item.expiration.isoformat(), item.size, item.key))
+                out(item.value)
 
 
 def do_get(servers, keys):
     for server in servers:
         mc = memcache.Client([server])
-        for key, val in mc.get_multi(keys).iteritems():
-            print '%s|%s' % (server, key)
-            print val
+        for key, val in mc.get_multi(keys).items():
+            out('%s|%s' % (server, key))
+            out(val)
 
 
 def do_set(servers, key, value):
     for server in servers:
         mc = memcache.Client([server])
         if mc.set(key, value):
-            print '%s|%s' % (server, key)
-            print value
+            out('%s|%s' % (server, key))
+            out(value)
 
 
 def do_incr(servers, keys, delta):
@@ -62,8 +72,8 @@ def do_incr(servers, keys, delta):
             except:
                 pass
             else:
-                print '%s|%s' % (server, key)
-                print val
+                out('%s|%s' % (server, key))
+                out(val)
 
 
 def do_decr(servers, keys, delta):
@@ -75,8 +85,8 @@ def do_decr(servers, keys, delta):
             except:
                 pass
             else:
-                print '%s|%s' % (server, key)
-                print val
+                out('%s|%s' % (server, key))
+                out(val)
 
 
 def do_delete(servers, keys):
@@ -84,22 +94,22 @@ def do_delete(servers, keys):
         mc = memcache.Client([server])
         if mc.delete_multi(keys):
             for key in keys:
-                print '%s|%s' % (server, key)
+                out('%s|%s' % (server, key))
 
 
 def do_flush(servers):
     for server in servers:
         mc = memcache.Client([server])
         mc.flush_all()
-        print server
+        out(server)
 
 
 def do_stats(servers):
     for server in servers:
         mc = memcache.Client([server])
         for host, stats in mc.get_stats():
-            for key, val in stats.iteritems():
-                print '%s|%s|%s' % (host.split()[0], key, val)
+            for key, val in stats.items():
+                out('%s|%s|%s' % (host.split()[0], key, val))
 
 
 class _CustomHelpFormatter(IndentedHelpFormatter):

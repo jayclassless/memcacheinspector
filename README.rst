@@ -34,6 +34,13 @@ Or, you can download the source and install it by hand::
 Installing the package installs both the memcacheinspector python module as well as the mcinspect command-line utility.
 
 
+Requirements
+============
+
+- Python 2.5+
+- The `python-memcache`_ module.
+
+
 Usage
 =====
 
@@ -113,6 +120,8 @@ _`Package Index`: http://pypi.python.org/pypi/memcacheinspector/
 _`Python`: http://www.python.org/
 
 _`Memcached`: http://memcached.org/
+
+_`python-memcached`: http://www.tummy.com/Community/software/python-memcached/
 
 _`pip`: http://pip.openplans.org/
 
