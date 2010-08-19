@@ -38,7 +38,7 @@ Requirements
 ============
 
 - Python 2.5+
-- The `python-memcache`_ module.
+- The `python-memcached`_ module.
 
 
 Usage
