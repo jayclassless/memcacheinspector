@@ -30,6 +30,7 @@ setup(
         'Intended Audience :: System Administrators',
         'Natural Language :: English',
         'Programming Language :: Python',
+        'Programming Language :: Python :: 3',
         'Topic :: Software Development :: Libraries :: Python Modules',
         'License :: OSI Approved :: MIT License',
     ],

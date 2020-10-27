@@ -37,7 +37,7 @@ Installing the package installs both the memcacheinspector python module as well
 Requirements
 ============
 
-- Python 2.5+
+- Python 2.6+
 - The `python-memcached`_ module.
 
 
