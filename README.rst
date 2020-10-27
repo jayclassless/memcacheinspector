@@ -113,7 +113,7 @@ memcacheinspector is released under the `MIT License`_. See the LICENSE file for
 Reference
 =========
 
-_`Home`: http://bitbucket.org/jayclassless/memcacheinspector/
+_`Home`: https://github.com/jayclassless/memcacheinspector
 
 _`Package Index`: http://pypi.python.org/pypi/memcacheinspector/
 
@@ -121,10 +121,10 @@ _`Python`: http://www.python.org/
 
 _`Memcached`: http://memcached.org/
 
-_`python-memcached`: http://www.tummy.com/Community/software/python-memcached/
+_`python-memcached`: https://pypi.org/project/python-memcached/
 
-_`pip`: http://pip.openplans.org/
+_`pip`: https://pip.pypa.io/
 
-_`SensePost Blog`: http://www.sensepost.com/blog/4873.html
+_`SensePost Blog`: https://sensepost.com/blog/2010/blackhat-write-up-go-derper-and-mining-memcaches/
 
 _`MIT License`: http://www.opensource.org/licenses/mit-license.php

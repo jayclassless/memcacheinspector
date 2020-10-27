@@ -18,7 +18,7 @@ setup(
     install_requires='python-memcached',
     author='Jason Simeone',
     author_email='jay@classless.net',
-    url='https://bitbucket.org/jayclassless/memcacheinspector',
+    url='https://github.com/jayclassless/memcacheinspector',
     description='Memcache Inspection Module and Command-Line Utility',
     long_description=open(os.path.join(os.path.dirname(__file__), 'README.rst')).read(),
 	license='MIT',
