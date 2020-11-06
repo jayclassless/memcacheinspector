@@ -47,7 +47,7 @@ class MemcacheInspectorTests(unittest.TestCase):
         if not hosts:
             hosts = [mc['addr'] for mc in self.mc]
         for host in hosts:
-            if not itemset.has_key(host):
+            if not host in itemset:
                 self.fail('%s does not have any items.' % (host,))
             ok = False
             for item in itemset[host]:

@@ -10,7 +10,7 @@ except ImportError:
 
 setup(
     name='memcacheinspector',
-    version='0.2.1',
+    version='0.2.2',
     packages=find_packages(exclude=['tests']),
 	scripts = [
 		'bin/mcinspect',
@@ -18,7 +18,7 @@ setup(
     install_requires='python-memcached',
     author='Jason Simeone',
     author_email='jay@classless.net',
-    url='https://bitbucket.org/jayclassless/memcacheinspector',
+    url='https://github.com/jayclassless/memcacheinspector',
     description='Memcache Inspection Module and Command-Line Utility',
     long_description=open(os.path.join(os.path.dirname(__file__), 'README.rst')).read(),
 	license='MIT',
@@ -30,6 +30,7 @@ setup(
         'Intended Audience :: System Administrators',
         'Natural Language :: English',
         'Programming Language :: Python',
+        'Programming Language :: Python :: 3',
         'Topic :: Software Development :: Libraries :: Python Modules',
         'License :: OSI Approved :: MIT License',
     ],
