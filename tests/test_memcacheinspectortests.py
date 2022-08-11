@@ -8,11 +8,13 @@ import unittest
 
 import memcache
 from memcacheinspector import *
+from time import sleep
 
 logging.basicConfig(level=logging.DEBUG)
 
 
 # These tests assume that memcached is already running.
+# Two memcached clusters (11222 and 11223) are needed to run the multiple client tests
 
 _PORT = 11222
 MC = []
@@ -37,6 +39,7 @@ class MemcacheInspectorTests(unittest.TestCase):
                 self.mc[i]['client'].set('just_for_first', 'special')
             elif i == (len(self.mc) - 1):
                 self.mc[i]['client'].set('just_for_last', 'also special')
+        sleep(1)
 
     def tearDown(self):
         for mc in self.mc:
@@ -73,6 +76,7 @@ class MemcacheInspectorTests(unittest.TestCase):
         for test in self.single_client_tests:
             mci = MemcacheInspector(test)
             self._singleClientItems(mci.get_items(include_values=True))
+            break
 
     def testGetItemsSingleClient(self):
         for test in self.single_client_tests:
