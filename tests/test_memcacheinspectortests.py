@@ -76,7 +76,6 @@ class MemcacheInspectorTests(unittest.TestCase):
         for test in self.single_client_tests:
             mci = MemcacheInspector(test)
             self._singleClientItems(mci.get_items(include_values=True))
-            break
 
     def testGetItemsSingleClient(self):
         for test in self.single_client_tests:

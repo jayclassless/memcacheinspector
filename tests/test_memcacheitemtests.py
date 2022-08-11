@@ -13,7 +13,7 @@ class MemcacheItemTests(unittest.TestCase):
 
     good_constructor_tests = (
         (('foo', 'foo'), (5, 5), (now, now)),
-        (('foo', 'foo'), (5, 5), (now, now)),
+        ((b'foo', 'foo'), (5, 5), (now, now)),
         ((123, '123'), (5, 5), (now, now)),
 
         (('foo', 'foo'), ('5', 5), (now, now)),

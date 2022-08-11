@@ -64,8 +64,8 @@ class MemcacheItem(object):
         return not self.equals(other)
 
 
-_RE_SLAB_STAT = re.compile(b'^STAT (?P<id>\d+):chunk_size (\d+)$')
-_RE_ITEM = re.compile(b'^ITEM (?P<key>\S+) \[(?P<size>\d+) b; (?P<expiration>\d+) s\]$')
+_RE_SLAB_STAT = re.compile(b'^STAT (?P<id>\\d+):chunk_size (\\d+)$')
+_RE_ITEM = re.compile(b'^ITEM (?P<key>\\S+) \[(?P<size>\\d+) b; (?P<expiration>\\d+) s\]$')
 
 class MemcacheInspector(object):
     def __init__(self, hosts):
@@ -132,6 +132,7 @@ class MemcacheInspector(object):
         return itemset
 
     def get_items(self, include_values=False, max_value_size=0):
+        global itemsets
         itemsets = {}
         for client in self.clients:
             itemsets.update(self._get_itemset(client, include_values, max_value_size))
