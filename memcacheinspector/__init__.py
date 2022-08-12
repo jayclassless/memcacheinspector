@@ -65,7 +65,7 @@ class MemcacheItem(object):
 
 
 _RE_SLAB_STAT = re.compile(b'^STAT (?P<id>\\d+):chunk_size (\\d+)$')
-_RE_ITEM = re.compile(b'^ITEM (?P<key>\\S+) \[(?P<size>\\d+) b; (?P<expiration>\\d+) s\]$')
+_RE_ITEM = re.compile(b'^ITEM (?P<key>\\S+) \\[(?P<size>\\d+) b; (?P<expiration>\\d+) s\\]$')
 
 class MemcacheInspector(object):
     def __init__(self, hosts):
