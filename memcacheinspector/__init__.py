@@ -132,7 +132,6 @@ class MemcacheInspector(object):
         return itemset
 
     def get_items(self, include_values=False, max_value_size=0):
-        global itemsets
         itemsets = {}
         for client in self.clients:
             itemsets.update(self._get_itemset(client, include_values, max_value_size))
