@@ -1,2 +1,2 @@
-from memcacheitemtests import *
-from memcacheinspectortests import *
+from .test_memcacheitemtests import *
+from .test_memcacheinspectortests import *

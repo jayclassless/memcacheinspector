@@ -6,7 +6,7 @@ import memcache
 
 
 __all__ = ('MemcacheInspector', 'MemcacheItem', 'MemcacheInspectorError', 'get_items')
-__version_info__ = (0, 2, 1)
+__version_info__ = (0, 2, 2)
 __version__ = '.'.join([str(x) for x in __version_info__])
 
 
@@ -20,7 +20,12 @@ class MemcacheItem(object):
         if not key:
             raise MemcacheInspectorError('A key must be specified.')
         else:
-            self.key = str(key)
+            if isinstance(key, str):
+                self.key = key
+            elif isinstance(key, bytes):
+                self.key = key.decode('utf-8')
+            else:
+                self.key = str(key)
 
         try:
             self.size = int(float(size))
@@ -59,8 +64,8 @@ class MemcacheItem(object):
         return not self.equals(other)
 
 
-_RE_SLAB_STAT = re.compile('^STAT (?P<id>\d+):chunk_size (\d+)$')
-_RE_ITEM = re.compile('^ITEM (?P<key>\S+) \[(?P<size>\d+) b; (?P<expiration>\d+) s\]$')
+_RE_SLAB_STAT = re.compile(b'^STAT (?P<id>\\d+):chunk_size (\\d+)$')
+_RE_ITEM = re.compile(b'^ITEM (?P<key>\\S+) \\[(?P<size>\\d+) b; (?P<expiration>\\d+) s\\]$')
 
 class MemcacheInspector(object):
     def __init__(self, hosts):
@@ -85,10 +90,10 @@ class MemcacheInspector(object):
             return 'unix:%s' % (server.address,)
 
     def _get_slabs(self, server):
-        server.send_cmd('stats slabs')
+        server.send_cmd(b'stats slabs')
         slabs = []
         line = server.readline()
-        while line and line != 'END':
+        while line and line != b'END':
             m = _RE_SLAB_STAT.match(line)
             if m:
                 slabs.append(m.groupdict()['id'])
@@ -103,9 +108,9 @@ class MemcacheInspector(object):
 
             items = {}
             for slab in self._get_slabs(server):
-                server.send_cmd('stats cachedump %s 0' % (slab,))
+                server.send_cmd(b'stats cachedump %s 0' % (slab,))
                 line = server.readline()
-                while line and line != 'END':
+                while line and line != b'END':
                     m = _RE_ITEM.match(line)
                     if m:
                         groups = m.groupdict()
@@ -114,9 +119,9 @@ class MemcacheInspector(object):
                     line = server.readline()
 
             if include_values and items:
-                server.send_cmd('get %s' % ' '.join([i.key for i in list(items.values())]))
+                server.send_cmd(b'get %s' % b' '.join([i.key.encode('utf-8') for i in list(items.values())]))
                 line = server.readline()
-                while line and line != 'END':
+                while line and line != b'END':
                     rkey, flags, rlen = cache._expectvalue(server, line)
                     if rkey is not None:
                         items[rkey].value = cache._recv_value(server, flags, rlen)

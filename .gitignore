@@ -1,4 +1,5 @@
-syntax: glob
+.idea
+.tox
 *.pyc
 *.swp
 build
